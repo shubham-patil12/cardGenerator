@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="Contact Card Generator">
+        <div class="slds-p-around_medium">
+            <lightning-input label="Name" onchange={handleNameChange}></lightning-input>
+            <lightning-input label="Email" onchange={handleEmailChange}></lightning-input>
+            <lightning-input label="City" onchange={handleCityChange}></lightning-input>
+
+            <lightning-input type="file" label="Upload Photo" onchange={handlePhotoUpload}></lightning-input>
+
+            <div class="slds-m-top_medium">
+                <lightning-button label="Generate Card" onclick={generateCard} class="slds-m-right_small"></lightning-button>
+                <lightning-button label="Reset" onclick={resetForm} variant="destructive"></lightning-button>
+            </div>
+
+            <template if:true={showCard}>
+                <div class="slds-box slds-m-top_medium">
+                    <template if:true={photoUrl}>
+                        <img src={photoUrl} alt="User Photo" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
+                    </template>
+                    <p><strong>Name:</strong> {name}</p>
+                    <p><strong>Email:</strong> {email}</p>
+                    <p><strong>City:</strong> {city}</p>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
